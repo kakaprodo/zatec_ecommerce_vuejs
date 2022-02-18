@@ -84,6 +84,9 @@ const Sh = {
   redirectTo: (routeName) => {
     window.location.href = Sh.appBaseUlr() + routeName;
   },
+  statusIsOk: (statusCode) => {
+    return statusCode === 200 || statusCode === 201;
+  },
 };
 
 export default Sh;

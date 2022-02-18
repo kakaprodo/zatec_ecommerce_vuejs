@@ -74,7 +74,6 @@ import RouteName from "../../utilities/route-names";
 </template>
 <script>
 import userApi from "../../api/users-api";
-import Sh from "../../utilities/shared-helper";
 
 export default {
   data: function () {
@@ -99,7 +98,7 @@ export default {
           password: this.password,
           password_confirmation: this.confirmPassword,
         },
-        onSuccess: () => Sh.redirectTo(RouteName.USER_PROFILE),
+        onSuccess: () => this.$router.push(RouteName.USER_PROFILE),
         onComplete: () => (this.isLoading = false),
       });
     },
