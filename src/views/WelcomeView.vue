@@ -46,7 +46,7 @@ export default {
     this.fetchProduct();
   },
   methods: {
-    fetchProduct: async function() {
+    fetchProduct: async function () {
       this.products = await productApi.fetchAll();
     },
     searchProduct: async function (e) {
@@ -65,6 +65,6 @@ export default {
 
       this.fetchProduct();
     },
-  }
+  },
 };
 </script>

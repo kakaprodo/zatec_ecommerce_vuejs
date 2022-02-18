@@ -1,11 +1,5 @@
 import http from "../utilities/http-client";
-
-const defaultOptions = {
-  searchValue: null,
-  onSuccess: () => {},
-  onError: () => {},
-  onComplete: () => {}
-};
+import defaultOptions from "./index-api";
 
 const productApi = {
   fetchAll: async function (options = { ...defaultOptions }) {

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pt-28">
     <TopNav />
     <div class="max-w-7xl mx-auto px-6 sm:px-8 bg-white py-10 mb-10">
       <slot></slot>
