@@ -41,8 +41,8 @@ export default {
       hasSearch: false,
     };
   },
-  mounted: function () {
-    this.fetchProduct();
+  mounted: async function () {
+    await this.fetchProduct();
   },
   methods: {
     fetchProduct: async function () {

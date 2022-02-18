@@ -36,8 +36,8 @@ export default {
       purchases: [],
     };
   },
-  mounted: async function() {
-      this.purchases = await userApi.userPurchases();
-  }
+  mounted: async function () {
+    this.purchases = await userApi.userPurchases();
+  },
 };
 </script>

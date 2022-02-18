@@ -1,3 +1,6 @@
+<script setup>
+import RouteName from "../../utilities/route-names";
+</script>
 <template>
   <div
     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5"
@@ -14,7 +17,11 @@
         <h2 class="card-title">{{ product.name }}</h2>
         <p>Price: {{ product.price }}$</p>
         <div class="my-3">
-          <button class="btn btn-primary btn-sm btn-outline">Purchase</button>
+          <RouterLink
+            :to="`${RouteName.SINGLE_PRODUCT}/${product.id}`"
+            class="btn btn-primary btn-sm btn-outline"
+            >Purchase
+          </RouterLink>
         </div>
       </div>
     </div>
