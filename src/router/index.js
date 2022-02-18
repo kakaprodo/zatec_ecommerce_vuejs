@@ -20,6 +20,11 @@ const router = createRouter({
       name: RouteName.REGISTER,
       component: () => import("../views/auth/RegisterView.vue"),
     },
+    {
+      path: RouteName.USER_PROFILE,
+      name: RouteName.USER_PROFILE,
+      component: () => import("../views/users/UserProfile.vue"),
+    },
   ],
 });
 

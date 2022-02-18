@@ -2,25 +2,25 @@
 import RouteName from "../../utilities/route-names";
 </script>
 <template>
-  <div className="hero min-h-screen bg-base-200">
-    <div className="card w-full max-w-lg card-bordered shadow-md bg-white">
-      <div className="card-body">
-        <span className="card-title">Register</span>
+  <div class="hero min-h-screen bg-base-200">
+    <div class="card w-full max-w-lg card-bordered shadow-md bg-white">
+      <div class="card-body">
+        <span class="card-title">Register</span>
         <form @submit="register">
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Name</span>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Name</span>
             </label>
             <input
               type="text"
               placeholder="Name"
-              className="input  input-bordered"
+              class="input input-bordered"
               v-model="name"
             />
           </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Email</span>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Email</span>
             </label>
             <input
               type="email"
@@ -30,9 +30,9 @@ import RouteName from "../../utilities/route-names";
               v-model="email"
             />
           </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Password</span>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Password</span>
             </label>
             <input
               type="password"
@@ -41,9 +41,9 @@ import RouteName from "../../utilities/route-names";
               v-model="password"
             />
           </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Confirm password</span>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Confirm password</span>
             </label>
             <input
               type="password"
@@ -52,7 +52,7 @@ import RouteName from "../../utilities/route-names";
               v-model="confirmPassword"
             />
           </div>
-          <div className="form-control mt-6">
+          <div class="form-control mt-6">
             <button
               type="submit"
               :class="`btn btn-primary ${isLoading && 'loading'}`"
@@ -61,10 +61,10 @@ import RouteName from "../../utilities/route-names";
             </button>
           </div>
         </form>
-        <div className="divider">Or</div>
-        <div className="flex place-content-center">
+        <div class="divider">Or</div>
+        <div class="flex place-content-center">
           <span>If you have an account, then </span>
-          <RouterLink :to="RouteName.LOGIN" className="text-primary pl-3"
+          <RouterLink :to="RouteName.LOGIN" class="text-primary pl-3"
             >Login
           </RouterLink>
         </div>
@@ -74,6 +74,7 @@ import RouteName from "../../utilities/route-names";
 </template>
 <script>
 import userApi from "../../api/users-api";
+import Sh from "../../utilities/shared-helper";
 
 export default {
   data: function () {
@@ -91,14 +92,14 @@ export default {
 
       this.isLoading = true;
 
-      await userApi.register({
+      userApi.register({
         formData: {
           name: this.name,
           email: this.email,
           password: this.password,
           password_confirmation: this.confirmPassword,
         },
-        onSuccess: () => {},
+        onSuccess: () => Sh.redirectTo(RouteName.USER_PROFILE),
         onComplete: () => (this.isLoading = false),
       });
     },

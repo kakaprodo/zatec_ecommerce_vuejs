@@ -42,7 +42,7 @@ import RouteName from "../../utilities/route-names";
         <div class="divider">Or</div>
         <div class="flex place-content-center">
           <span>You don't have an account, then </span>
-          <RouterLink :to="RouteName.REGISTER" className="text-primary pl-3"
+          <RouterLink :to="RouteName.REGISTER" class="text-primary pl-3"
             >Register
           </RouterLink>
         </div>
@@ -52,6 +52,7 @@ import RouteName from "../../utilities/route-names";
 </template>
 <script>
 import userApi from "../../api/users-api";
+import Sh from "../../utilities/shared-helper";
 
 export default {
   data: function () {
@@ -62,17 +63,17 @@ export default {
     };
   },
   methods: {
-    login: async function (e) {
+    login: function (e) {
       e.preventDefault();
 
       this.isLoading = true;
 
-      await userApi.login({
+      userApi.login({
         formData: {
           email: this.email,
           password: this.password,
         },
-        onSuccess: () => {},
+        onSuccess: () => Sh.redirectTo(RouteName.USER_PROFILE),
         onComplete: () => (this.isLoading = false),
       });
     },

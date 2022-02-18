@@ -19,6 +19,12 @@ const userApi = {
     this.formatResponse(resp, options);
   },
 
+  topupAccount: async function (options = defaultOptions) {
+    const resp = await http.post("topup-account", options.formData);
+
+    this.formatResponse(resp, options);
+  },
+
   formatResponse: (response, requestOptions = defaultOptions) => {
     requestOptions = { ...defaultOptions, ...requestOptions };
 

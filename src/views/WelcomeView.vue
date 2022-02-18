@@ -29,7 +29,6 @@
 </template>
 
 <script>
-import BodyLayout from "../components/BodyLayout.vue";
 import ListProduct from "../components/products/ListProduct.vue";
 import productApi from "../api/products-api";
 import Sh from "../utilities/shared-helper";
@@ -58,7 +57,7 @@ export default {
       });
     },
   },
-  components: { ListProduct, BodyLayout },
+  components: { ListProduct },
   watch: {
     searchValue: function (val) {
       if (!Sh.isEmpty(val)) return;
