@@ -1,5 +1,6 @@
 <script setup>
-import UserTransactions from "../transactions/UserTransactions.vue";
+import UserTransactions from "./UserTransactions.vue";
+import UserPurchases from "./UserPurchases.vue";
 </script>
 <template>
   <div>
@@ -18,7 +19,7 @@ import UserTransactions from "../transactions/UserTransactions.vue";
       </span>
     </div>
     <div v-if="tabIndex === 0"><UserTransactions /></div>
-    <div v-if="tabIndex === 1">Purchaes</div>
+    <div v-if="tabIndex === 1"><UserPurchases /></div>
   </div>
 </template>
 <script>

@@ -4,11 +4,9 @@ import Sh from "../../utilities/shared-helper";
 </script>
 
 <template>
-  <div className="bg-gray-50 p-0 sm:p-5">
-    <div className="divider">
-      <p class="text-xl">Transaction list</p>
-    </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+  <div class="bg-gray-50 p-0 sm:p-5">
+    <div class="h2 text-xl">Your transactions</div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
       <span v-if="!transactions.length"
         >You haven't yet perform any transaction</span
       >
@@ -20,7 +18,7 @@ import Sh from "../../utilities/shared-helper";
         <div class="card-body flex-row justify-between">
           <div>
             <h2 class="text-lg">{{ transaction.description }}</h2>
-            <p className="text-sm">{{ transaction.type }}</p>
+            <p class="text-sm">{{ transaction.type }}</p>
             <small>{{ Sh.dateFormat(transaction.created_at) }}</small>
           </div>
           <div>

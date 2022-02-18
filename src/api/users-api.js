@@ -30,6 +30,11 @@ const userApi = {
 
     return this.formatResponse(resp, options);
   },
+  userPurchases: async function (options = defaultOptions) {
+    const resp = await http.get("purchases");
+
+    return this.formatResponse(resp, options);
+  },
 
   formatResponse: (response, requestOptions = defaultOptions) => {
     requestOptions = {
