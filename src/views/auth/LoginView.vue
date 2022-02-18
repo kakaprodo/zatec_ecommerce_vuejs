@@ -1,3 +1,6 @@
+<script setup>
+import RouteName from "../../utilities/route-names";
+</script>
 <template>
   <div class="hero min-h-screen">
     <div class="card w-full max-w-lg card-bordered shadow-md bg-white">
@@ -30,7 +33,7 @@
           <div class="form-control mt-6">
             <button
               type="submit"
-              :class="`btn btn-primary ${isLoading && 'btn-loading'}`"
+              :class="`btn btn-primary ${isLoading && 'loading'}`"
             >
               Login
             </button>
@@ -39,7 +42,9 @@
         <div class="divider">Or</div>
         <div class="flex place-content-center">
           <span>You don't have an account, then </span>
-          <a class="text-primary pl-3">Register</a>
+          <RouterLink :to="RouteName.REGISTER" className="text-primary pl-3"
+            >Register
+          </RouterLink>
         </div>
       </div>
     </div>
@@ -60,10 +65,15 @@ export default {
     login: async function (e) {
       e.preventDefault();
 
+      this.isLoading = true;
+
       await userApi.login({
-        email: this.email,
-        password: this.password,
+        formData: {
+          email: this.email,
+          password: this.password,
+        },
         onSuccess: () => {},
+        onComplete: () => (this.isLoading = false),
       });
     },
   },

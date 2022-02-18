@@ -13,4 +13,13 @@ http.interceptors.request.use(async (config) => {
   return config;
 });
 
+http.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
+    return Promise.resolve(error.response);
+  }
+);
+
 export default http;

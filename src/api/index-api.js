@@ -1,7 +1,6 @@
 const defaultOptions = {
   searchValue: null,
-  email: null,
-  password: null,
+  formData: {},
   onSuccess: () => {},
   onError: () => {},
   onComplete: () => {},
