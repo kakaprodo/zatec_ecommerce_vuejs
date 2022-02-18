@@ -1,3 +1,7 @@
+<script setup>
+import RouteName from "../../utilities/route-names";
+</script>
+
 <template>
   <div class="fixed top-0 left-0 right-0 z-50">
     <div class="navbar mb-2 shadow-lg bg-white text-neutral rounded-none">
@@ -8,7 +12,9 @@
       </div>
 
       <div class="flex-none">
-        <button class="btn btn-primary mx-2 btn-sm">Login</button>
+        <RouterLink :to="RouteName.LOGIN" class="btn btn-primary mx-2 btn-sm"
+          >Login
+        </RouterLink>
       </div>
     </div>
   </div>
