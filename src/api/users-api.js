@@ -25,8 +25,17 @@ const userApi = {
     this.formatResponse(resp, options);
   },
 
+  userTransactions: async function (options = defaultOptions) {
+    const resp = await http.get("user-transactions");
+
+    return this.formatResponse(resp, options);
+  },
+
   formatResponse: (response, requestOptions = defaultOptions) => {
-    requestOptions = { ...defaultOptions, ...requestOptions };
+    requestOptions = {
+      ...defaultOptions,
+      ...requestOptions,
+    };
 
     requestOptions.onComplete();
 
@@ -34,7 +43,11 @@ const userApi = {
       return requestOptions.onError();
     }
 
-    requestOptions.onSuccess();
+    const data = response?.data?.data;
+
+    requestOptions.onSuccess(data);
+
+    return data;
   },
 };
 

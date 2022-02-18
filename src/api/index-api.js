@@ -1,4 +1,4 @@
-const defaultOptions = {
+export const defaultOptions = {
   searchValue: null,
   formData: {},
   onSuccess: () => {},

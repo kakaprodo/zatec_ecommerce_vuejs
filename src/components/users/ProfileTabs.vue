@@ -1,3 +1,6 @@
+<script setup>
+import UserTransactions from "../transactions/UserTransactions.vue";
+</script>
 <template>
   <div>
     <div class="tabs mt-5">
@@ -9,12 +12,13 @@
       </span>
       <span
         @click="tabIndex = 1"
-        :class="`tab tab-lg tab-lifted ${tabIndex === 0 && 'tab-active'}`"
+        :class="`tab tab-lg tab-lifted ${tabIndex === 1 && 'tab-active'}`"
       >
         Purchases
       </span>
     </div>
-    <div>{{ tabContent() }}</div>
+    <div v-if="tabIndex === 0"><UserTransactions /></div>
+    <div v-if="tabIndex === 1">Purchaes</div>
   </div>
 </template>
 <script>
@@ -23,11 +27,6 @@ export default {
     return {
       tabIndex: 0,
     };
-  },
-  methods: {
-    tabContent: function () {
-      return ["<div>Transaction<div>", "<div>Purchaes<div>"][this.tabIndex];
-    },
   },
 };
 </script>
