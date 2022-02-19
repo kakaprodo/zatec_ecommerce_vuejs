@@ -1,5 +1,9 @@
 import http from "./http-client";
 import dateFormat from "dateformat";
+import store from "../stores";
+import StoreModules from "../stores/module-names";
+import Mutations from "../stores/mutations";
+import RouteName from "./route-names";
 
 const Sh = {
   DISCOUNT_RULE_BETWEEN: "between",
@@ -8,12 +12,23 @@ const Sh = {
     await this.storageAdd("token", token);
     await this.setAuthUser(token);
   },
+  /**
+   * Set ot refresh the auth user
+   * @returns
+   */
   setAuthUser: async function () {
     const resp = await http.get("user");
 
     if (resp.status !== 200) return;
 
-    this.storageAdd("user", JSON.stringify(resp.data.data));
+    const user = resp.data.data;
+
+    this.storageAdd("user", JSON.stringify(user));
+
+    store.commit({
+      type: `${StoreModules.USER}/${Mutations.SET_AUTH_USER}`,
+      user: user,
+    });
   },
   getAuthUser: function (onExists = () => {}, onNotExists = () => {}) {
     let user = this.storageGet("user");
@@ -35,11 +50,12 @@ const Sh = {
   storageDelete: (key) => {
     return localStorage.removeItem(key);
   },
-  logoutUser: function () {
+  logoutUser: function (routeNavigation) {
     this.storageDelete("token");
     this.storageDelete("user");
+    store.commit(`${StoreModules.USER}/${Mutations.INITIALIZE}`);
 
-    window.location.href = "/";
+    routeNavigation.push(RouteName.INDEX);
   },
   appBaseUlr: () => {
     return window.location.protocol + "//" + window.location.host;

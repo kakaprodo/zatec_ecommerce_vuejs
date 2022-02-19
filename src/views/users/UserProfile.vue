@@ -1,30 +1,20 @@
 <template>
   <BodyLayout>
-    <ProfileHeader :auth-User="authUser" :refresh-User-Data="refreshUserData" />
+    <ProfileHeader :auth-User="authUser" />
 
     <ProfileTabs />
   </BodyLayout>
 </template>
 <script>
+import { mapState } from "vuex";
 import ProfileHeader from "../../components/users/ProfileHeader.vue";
 import ProfileTabs from "../../components/users/ProfileTabs.vue";
-import Sh from "../../utilities/shared-helper";
+import StoreModules from "../../stores/module-names";
 export default {
-  data: function () {
-    return {
-      authUser: {},
-    };
-  },
-  mounted: async function () {
-    this.authUser = await Sh.getAuthUser();
-  },
-
-  methods: {
-    refreshUserData: async function () {
-      await Sh.setAuthUser();
-
-      this.authUser = await Sh.getAuthUser();
-    },
+  computed: {
+    ...mapState(StoreModules.USER, {
+      authUser: "user",
+    }),
   },
 
   components: { ProfileHeader, ProfileTabs },
