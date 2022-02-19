@@ -79,7 +79,10 @@ export default {
           product_id: this.productId,
           quantity: this.quantity,
         },
-        onSuccess: () => Sh.redirectTo(RouteName.USER_PROFILE),
+        onSuccess: async () => {
+          await Sh.setAuthUser();
+          this.$router.push(RouteName.USER_PROFILE);
+        },
         onComplete: () => (this.isLoading = false),
       });
     },

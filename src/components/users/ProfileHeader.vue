@@ -66,8 +66,9 @@
 </template>
 <script>
 import userApi from "../../api/users-api";
+import Sh from "../../utilities/shared-helper";
 export default {
-  props: ["authUser", "refreshUserData"],
+  props: ["authUser"],
   data() {
     return {
       amount: "",
@@ -84,7 +85,8 @@ export default {
       });
 
       this.amount = "";
-      this.refreshUserData();
+
+      await Sh.setAuthUser();
     },
   },
 };
