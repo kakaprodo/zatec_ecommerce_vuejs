@@ -12,6 +12,8 @@
     "axios": "^0.26.0",
     "daisyui": "^2.0.9",
     "dateformat": "^5.0.2",
+    "express": "^4.17.3",
+    "serve-static": "^1.15.0",
     "vue": "^3.2.29",
     "vue-router": "^4.0.12",
     "vuex": "^4.0.2"
